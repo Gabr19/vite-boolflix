@@ -1,6 +1,6 @@
 <script>
-  import axios from 'axios';
-  import { store } from './components/store'
+   import axios from 'axios';
+   import { store } from './components/store'
 
 
   import AppHeader from './components/AppHeader.vue';
@@ -18,39 +18,22 @@
       AppMain
     },
     methods: {
-      handleSearchEvent(){
-
-        let url = 'https://api.themoviedb.org/3/search/';
-        console.log('searchText:' , this.store.searchText);
-
+      handleSearchEvent() {
+      let url = 'https://api.themoviedb.org/3/search/movie';
         axios
-          .get(url + 'movie', {
-            params: {
-              api_key: 'e99307154c6dfb0b4750f6603256716d',
-              query: this.store.searchText,
-            },
+        .get(url, {
+          params: {
+            api_key: 'e99307154c6dfb0b4750f6603256716d',
+            query: store.searchText,
+          }
         })
-          .then((response) =>  {
-          console.log(response);
-          this.store.movies = response.data.results;
+        .then((response) => {
+          store.movies = response.data.results;
+          console.log(store.movies);
         });
-
-        axios
-          .get(url + 'tv', {
-            params: {
-              api_key: 'e99307154c6dfb0b4750f6603256716d',
-              query: this.store.searchText,
-            },
-        })
-          .then((response) =>  {
-          console.log(response);
-          this.store.series = response.data.results;
-        });
-
-
       }
-    },
-};
+    }
+  }
 
 </script>
 
@@ -60,7 +43,7 @@
   
 </template>
 
-<style lang="scss" scoped>
-  @import './styles/main.scss';
+<style lang="scss" >
+  @import './styles/all.scss'
 
 </style>

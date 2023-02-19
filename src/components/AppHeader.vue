@@ -1,5 +1,5 @@
-<script>
-  import { store } from './store'
+<script >
+  import { store } from './store';
 
   export default {
     name: 'AppHeader',
@@ -15,11 +15,12 @@
 
 <template>
   <div class="container">
-    <input type="text" v-model="store.searchText">
+    <input type="text" v-model="store.searchText" >
     <button @click="$emit('performSearch')">
-      Button
+      invio
     </button>
   </div>
+  
   
 </template>
 
